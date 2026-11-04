@@ -1,0 +1,18 @@
+# Claude Desktop extension: a v* tag publishes matera-cli.mcpb on its GitHub release.
+name: extension
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  extension:
+    permissions:
+      contents: write
+    uses: ClementWalter/mcp-bridge/.github/workflows/extension.yml@23f8b3820650e074cff6825891b202f539b14b5c
+    with:
+      launcher: bin/matera
+      bridge-ref: 23f8b3820650e074cff6825891b202f539b14b5c

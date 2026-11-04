@@ -130,6 +130,16 @@ def test_browser_token_ignores_unfilled_extension_setting(m, monkeypatch):
         m.browser_token()
 
 
+@pytest.mark.parametrize("value, expected", [
+    ("/tmp/matera-out", Path("/tmp/matera-out")),
+    ("${user_config.download_dir}", Path.home() / "Downloads" / "matera"),
+    ("", Path.home() / "Downloads" / "matera"),
+])
+def test_default_out(m, monkeypatch, value, expected):
+    monkeypatch.setenv("MATERA_DOWNLOAD_DIR", value)
+    assert m.default_out() == expected
+
+
 # --- normalization ----------------------------------------------------------
 
 @pytest.mark.parametrize("raw, expected", [

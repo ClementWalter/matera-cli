@@ -1,0 +1,24 @@
+{
+  "display_name": "Matera",
+  "description": "Read your Matera co-ownership account from Claude: documents, general meetings, accounts, and a full copy of every file.",
+  "long_description": "Reads your Matera (syndic de copropriété) space at app.matera.eu as you: every document your account can see (meeting notices and minutes, fund calls, invoices, quotes, contracts), the general meetings, the accounting years and the general ledger, and can copy all the documents to your Mac in Matera's folder layout.\n\nSetup:\n1. In Google Chrome (or Arc, Brave, Edge), sign in at https://app.matera.eu and keep the tab open or reload it before you ask Claude.\n2. In Claude, ask: \"connect my Matera account\", then for example \"list the documents of the next general meeting\" or \"copy all my Matera documents to my Mac\".\n\nThe extension reads the short-lived access token the Matera website keeps in your browser and never stores or renews it, so it cannot sign you out. If Claude says no live token was found, reload app.matera.eu in Chrome and ask again. Documents are saved in the Download folder from this extension's settings (Downloads/matera by default).",
+  "platforms": ["darwin"],
+  "env": {
+    "MATERA_DOWNLOAD_DIR": "${user_config.download_dir}"
+  },
+  "user_config": {
+    "download_dir": {
+      "type": "directory",
+      "title": "Download folder",
+      "description": "Where documents are saved.",
+      "default": "~/Downloads/matera",
+      "required": false
+    }
+  },
+  "site": {
+    "group": "home",
+    "rank": 25,
+    "needs": ["A Matera co-owner account", "Signed in at app.matera.eu in Chrome, Arc, Brave or Edge"],
+    "risk": "unofficial-api"
+  }
+}

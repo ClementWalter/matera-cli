@@ -44,7 +44,15 @@ log = logging.getLogger("matera")
 
 API = "https://api-core.matera.eu"
 UA = "matera-cli (+https://github.com/ClementWalter/matera-cli)"
-DEFAULT_OUT = Path.home() / "Downloads" / "matera"
+def default_out() -> Path:
+    """$MATERA_DOWNLOAD_DIR (the extension's Download folder setting), else ~/Downloads/matera."""
+    value = os.environ.get("MATERA_DOWNLOAD_DIR", "").strip()
+    if value and not value.startswith("${"):
+        return Path(value).expanduser()
+    return Path.home() / "Downloads" / "matera"
+
+
+DEFAULT_OUT = default_out()
 MANIFEST = ".matera-manifest.json"
 TIMEOUT = 60
 MAX_RETRIES = 3

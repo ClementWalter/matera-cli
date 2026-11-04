@@ -2,8 +2,9 @@
 
 **Visibility: public.**
 
-**Extension: not shipped** (it borrows a 15-minute token from a browser that
-must be signed in to Matera on the same Mac; untested under Claude Desktop).
+Also a Claude Desktop extension: download `matera-cli.mcpb` from the
+[latest release](https://github.com/ClementWalter/matera-cli/releases/latest)
+or from <https://clementwalter.github.io/claude-extensions/#matera>.
 
 Read your [Matera](https://matera.eu) copropriété account from the terminal:
 documents and folders, general assemblies, accounting years, the general ledger,
